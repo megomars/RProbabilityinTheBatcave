@@ -1,0 +1,43 @@
+---
+title: "R probability"
+output: html_notebook
+---
+
+Probability is the glue between descriptive statistics and inferential statistics. Probability is the study of how data can be generated from a model.
+
+```{r}
+library(ggplot2)
+
+rbinom(1,1,.5)
+#number of random draws, number of random coins we're flipping, prob of heads
+
+#flip 1 fair coin 1 million times
+flips<-rbinom(1000000,1,.5)
+table(flips)
+hist(flips)
+# OBSERVATION: The higher the number of flips the more likely we tend to 0.5
+
+#flip 1 biased coin 1 million times
+flipsbias<-rbinom(1000000,1,.8)
+table(flipsbias)
+# OBSERVATION: The higher the number of flips the more likely we tend to p
+
+#flip 1 million fair coins once
+flipmil <- rbinom(1,1000000,0.5)
+flipmil
+# OBSERVATION: The higher the number of flips the more likely we tend to p
+
+#flip 1 million fair coin 1 million times
+flipmilmil <- rbinom(1000000,1000000,0.5)
+mean(flipmilmil)
+min(flipmilmil)
+max(flipmilmil)
+plot(flipmilmil)
+# OBSERVATION: The higher the number of flips the more likely we tend to p
+
+# Generate 100 occurrences of flipping 10 coins, each with 30% probability
+test <- rbinom(100,10,0.3)
+hist(test)
+```
+
+
